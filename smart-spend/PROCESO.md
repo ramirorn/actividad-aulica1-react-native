@@ -322,4 +322,59 @@ Procede con la task 5
 
 ---
 
+## T06: Construir formulario de alta de gasto
+
+### Prompt del usuario
+
+```
+Procede con la task 6.
+```
+
+### Acciones realizadas por el agente
+
+1. **Creación de `app/nuevo.js`:**
+   - Se implementó la pantalla de creación de gastos.
+   - Se usaron estados independientes para `title`, `amount`, `category`, `date`, `note` y `errors`.
+   - El estado inicial de la fecha se configura a la fecha actual (`YYYY-MM-DD`).
+
+2. **Implementación de campos y componentes:**
+   - Se utilizó `FormField` para Título, Monto (con `keyboardType="numeric"`), Fecha y Nota (con `multiline=true`).
+   - Para la Categoría, se construyó un selector horizontal (`flexWrap: 'wrap'`) utilizando `TouchableOpacity` que itera sobre la constante `CATEGORIES`, mostrando el ícono y la etiqueta como chips seleccionables.
+   - Todo el formulario está envuelto en un `KeyboardAvoidingView` y `ScrollView` para asegurar accesibilidad con el teclado nativo, especialmente en iOS.
+
+3. **Lógica de validación (`handleSave`):**
+   - **Título:** Obligatorio (`trim()`).
+   - **Monto:** Validado como numérico (se reemplaza coma por punto por si el teclado lo envía así) y mayor a 0.
+   - **Categoría:** Selección obligatoria.
+   - **Fecha:** Validada con expresión regular para el formato `YYYY-MM-DD`. También se valida lógicamente que la fecha ingresada no sea mayor a la fecha actual.
+   - Si existen errores, se guardan en el estado `errors` y se envían a cada `FormField` respectivo para renderizarse en rojo.
+
+4. **Operación de guardado y navegación:**
+   - Al enviar el formulario con datos válidos, se invoca `addExpense(data)`.
+   - El botón deshabilita y cambia su texto a *"Guardando..."* mientras se procesa.
+   - Al completarse, se muestra un `Alert.alert` indicando éxito y un botón "OK" que navega a la pantalla principal usando `router.replace('/')`.
+
+5. **Verificación de sintaxis:**
+   - Se verificó la sintaxis del código con `node --check app/nuevo.js`: OK.
+
+### Criterios de aceptación verificados
+
+- [x] Todos los campos se renderizan correctamente.
+- [x] Se muestran errores de validación debajo de cada campo con error.
+- [x] No se puede enviar el formulario con campos inválidos.
+- [x] Al enviar correctamente, el gasto se agrega y se navega al Dashboard.
+- [x] El botón muestra *"Guardando..."* durante la operación.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `1848ab7` | `feat: crear formulario de alta de gasto (T06)` | 3 archivos cambiados, 292 inserciones, 7 eliminaciones |
+
+---
+
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->

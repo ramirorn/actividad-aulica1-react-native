@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 5 | 0 | 3 | **8** |
+| 6 | 0 | 2 | **8** |
 
 ---
 
@@ -121,7 +121,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T06: Construir formulario de alta de gasto
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `app/nuevo.js`
 - **Dependencias:** T02, T04
 - **Descripción:**
@@ -138,11 +138,11 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
     - Mostrar `Alert` de éxito.
     - Navegar de vuelta al Dashboard con `router.replace("/")`.
 - **Criterios de aceptación:**
-  - [ ] Todos los campos se renderizan correctamente.
-  - [ ] Se muestran errores de validación debajo de cada campo con error.
-  - [ ] No se puede enviar el formulario con campos inválidos.
-  - [ ] Al enviar correctamente, el gasto se agrega y se navega al Dashboard.
-  - [ ] El botón muestra *"Guardando..."* durante la operación.
+  - [x] Todos los campos se renderizan correctamente.
+  - [x] Se muestran errores de validación debajo de cada campo con error.
+  - [x] No se puede enviar el formulario con campos inválidos.
+  - [x] Al enviar correctamente, el gasto se agrega y se navega al Dashboard.
+  - [x] El botón muestra *"Guardando..."* durante la operación.
 
 ---
 
