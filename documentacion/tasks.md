@@ -8,13 +8,13 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 0 | 0 | 8 | **8** |
+| 1 | 0 | 7 | **8** |
 
 ---
 
 ## T01: Configuración inicial de expo-router y layout base
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `app/_layout.js`, `package.json`, `app.json`
 - **Descripción:**
   - Crear el proyecto Expo con el template de `expo-router`.
@@ -22,9 +22,9 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
   - Definir opciones globales de navegación (título, colores del header).
   - Verificar que la app corre sin errores en Expo Go.
 - **Criterios de aceptación:**
-  - [ ] El proyecto se inicia sin errores con `npx expo start`.
-  - [ ] El layout raíz renderiza correctamente el Stack navigator.
-  - [ ] La estructura de carpetas base está creada (`/app`, `/components`, `/services`, `/constants`).
+  - [x] El proyecto se inicia sin errores con `npx expo start`.
+  - [x] El layout raíz renderiza correctamente el Stack navigator.
+  - [x] La estructura de carpetas base está creada (`/app`, `/components`, `/services`, `/constants`).
 
 ---
 
