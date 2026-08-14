@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { CATEGORIES } from '../constants/categories';
 import { addExpense } from '../services/mockExpenses';
 import FormField from '../components/FormField';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function NuevoGastoScreen() {
   const router = useRouter();
@@ -12,11 +13,8 @@ export default function NuevoGastoScreen() {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
-  const [date, setDate] = useState(() => {
-    // default to today YYYY-MM-DD
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-  });
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [note, setNote] = useState('');
 
   // Error states
@@ -31,7 +29,7 @@ export default function NuevoGastoScreen() {
       newErrors.title = 'El título es obligatorio';
     }
 
-    const numericAmount = parseFloat(amount.replace(',', '.')); // handle comma if user types it
+    const numericAmount = parseFloat(amount.replace(',', '.'));
     if (isNaN(numericAmount) || numericAmount <= 0) {
       newErrors.amount = 'Ingresá un monto válido mayor a cero';
     }
@@ -40,20 +38,13 @@ export default function NuevoGastoScreen() {
       newErrors.category = 'Seleccioná una categoría';
     }
 
-    // Basic date validation YYYY-MM-DD
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(date)) {
-      newErrors.date = 'El formato debe ser YYYY-MM-DD';
-    } else {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      
-      const [y, m, d] = date.split('-');
-      const localInputDate = new Date(y, m - 1, d);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const selectedDateMidnight = new Date(date);
+    selectedDateMidnight.setHours(0, 0, 0, 0);
 
-      if (localInputDate > today) {
-        newErrors.date = 'La fecha no puede ser futura';
-      }
+    if (selectedDateMidnight > today) {
+      newErrors.date = 'La fecha no puede ser futura';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -64,19 +55,23 @@ export default function NuevoGastoScreen() {
     setErrors({});
     setIsSubmitting(true);
 
+    const formattedDate = date.toISOString().split('T')[0];
+
     addExpense({
       title: title.trim(),
       amount: numericAmount,
       category,
-      date,
+      date: formattedDate,
       note: note.trim() || null
     }).then(() => {
       setIsSubmitting(false);
       Alert.alert('Éxito', 'El gasto ha sido guardado correctamente', [
-        { text: 'OK', onPress: () => router.replace('/') }
+        { text: 'OK', onPress: () => router.back() }
       ]);
     });
   };
+
+  const formattedDateDisplay = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 
   return (
     <KeyboardAvoidingView 
@@ -127,13 +122,45 @@ export default function NuevoGastoScreen() {
           {errors.category ? <Text style={styles.errorText}>{errors.category}</Text> : null}
         </View>
 
-        <FormField
-          label="Fecha (YYYY-MM-DD)"
-          value={date}
-          onChangeText={setDate}
-          placeholder="2026-08-14"
-          error={errors.date}
-        />
+        {/* Date Picker */}
+        <View style={styles.fieldContainer}>
+          <Text style={styles.label}>Fecha</Text>
+          {Platform.OS === 'ios' ? (
+            <View style={styles.iosDatePickerContainer}>
+              <DateTimePicker
+                value={date}
+                mode="date"
+                display="default"
+                onChange={(event, selectedDate) => {
+                  if (selectedDate) setDate(selectedDate);
+                }}
+                maximumDate={new Date()}
+              />
+            </View>
+          ) : (
+            <TouchableOpacity 
+              style={styles.datePickerButton} 
+              onPress={() => setShowDatePicker(true)}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.datePickerText}>{formattedDateDisplay}</Text>
+            </TouchableOpacity>
+          )}
+
+          {showDatePicker && Platform.OS === 'android' && (
+            <DateTimePicker
+              value={date}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                setShowDatePicker(false);
+                if (selectedDate) setDate(selectedDate);
+              }}
+              maximumDate={new Date()}
+            />
+          )}
+          {errors.date ? <Text style={styles.errorText}>{errors.date}</Text> : null}
+        </View>
 
         <FormField
           label="Nota (opcional)"
@@ -143,16 +170,27 @@ export default function NuevoGastoScreen() {
           multiline={true}
         />
 
-        <TouchableOpacity 
-          style={[styles.saveButton, isSubmitting && styles.saveButtonDisabled]} 
-          onPress={handleSave}
-          disabled={isSubmitting}
-          activeOpacity={0.8}
-        >
-          <Text style={styles.saveButtonText}>
-            {isSubmitting ? 'Guardando...' : 'Guardar Gasto'}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.buttonsRow}>
+          <TouchableOpacity 
+            style={styles.cancelButton} 
+            onPress={() => router.back()}
+            disabled={isSubmitting}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.cancelButtonText}>Cancelar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[styles.saveButton, isSubmitting && styles.saveButtonDisabled]} 
+            onPress={handleSave}
+            disabled={isSubmitting}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.saveButtonText}>
+              {isSubmitting ? 'Guardando...' : 'Guardar'}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -207,17 +245,50 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '600',
   },
+  datePickerButton: {
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#DDE1E5',
+    borderRadius: 8,
+    padding: 12,
+  },
+  datePickerText: {
+    fontSize: 15,
+    color: '#2C3E50',
+  },
+  iosDatePickerContainer: {
+    alignItems: 'flex-start',
+  },
   errorText: {
     fontSize: 13,
     color: '#E74C3C',
     marginTop: 6,
   },
+  buttonsRow: {
+    flexDirection: 'row',
+    marginTop: 16,
+    gap: 12,
+  },
+  cancelButton: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#DDE1E5',
+    borderRadius: 10,
+    paddingVertical: 14,
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    color: '#2C3E50',
+    fontSize: 16,
+    fontWeight: '600',
+  },
   saveButton: {
+    flex: 1,
     backgroundColor: '#4A90D9',
     borderRadius: 10,
     paddingVertical: 14,
     alignItems: 'center',
-    marginTop: 16,
   },
   saveButtonDisabled: {
     backgroundColor: '#95A5A6',

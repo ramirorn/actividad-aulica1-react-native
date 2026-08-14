@@ -18,11 +18,11 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="nuevo"
-          options={{ title: 'Nuevo Gasto' }}
+          options={{ title: 'Nuevo Gasto', headerBackVisible: false }}
         />
         <Stack.Screen
           name="categorias"
-          options={{ title: 'Categorías' }}
+          options={{ title: 'Categorías', headerBackVisible: false }}
         />
         <Stack.Screen
           name="gasto/[id]"

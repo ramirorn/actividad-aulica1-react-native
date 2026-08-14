@@ -367,13 +367,20 @@ Procede con la task 6.
 
 ### Revisiones / Cambios solicitados
 
-> No se solicitaron revisiones ni cambios para esta tarea.
+> **Usuario:** "Nuevamente ocurre lo mismo en el formulario de carga de gastos, aparece el headerBackVisible y esto rompe la estética de la app. Además, agregar la fecha del gasto es muy poco intuitivo... te lleva supuestamente a la pantalla de inicio, pero en esta aparece el headerBackVisible nuevamente."
+> 
+> **Acción:** 
+> 1. Se instaló `@react-native-community/datetimepicker` y se reemplazó el campo de texto por un selector de fecha nativo intuitivo (spinner en iOS, modal en Android).
+> 2. Se reemplazó el método `router.replace('/')` por `router.back()` en el guardado exitoso para evitar apilar una nueva instancia del Dashboard y prevenir la aparición del botón de atrás nativo en la raíz.
+> 3. Se ocultó el header de atrás (`headerBackVisible: false`) en `app/_layout.js` para `/nuevo` y `/categorias`.
+> 4. Se agregó un botón secundario "Cancelar" en el formulario de alta.
 
 ### Commits
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
-| `1848ab7` | `feat: crear formulario de alta de gasto (T06)` | 3 archivos cambiados, 292 inserciones, 7 eliminaciones |
+| `f0f57c9` | `feat: crear formulario de alta de gasto (T06)` | 3 archivos cambiados, 292 inserciones, 7 eliminaciones |
+| `5a57643` | `fix: mejorar ux fecha, remover botón atrás redundante y corregir navegación` | 6 archivos cambiados |
 
 ---
 
