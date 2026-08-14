@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 7 | 0 | 1 | **8** |
+| 8 | 0 | 0 | **8** |
 
 ---
 
@@ -171,7 +171,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T08: Verificación y pulido de UI
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** Todos los archivos del proyecto
 - **Dependencias:** T01–T07
 - **Descripción:**
@@ -187,11 +187,12 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
     - Textos en español sin errores ortográficos.
   - Revisar que el código y comentarios estén en inglés.
 - **Criterios de aceptación:**
-  - [ ] La app corre sin errores ni warnings en Expo Go.
-  - [ ] Todos los flujos de navegación funcionan correctamente.
-  - [ ] Los 3 estados de UI están implementados en todas las pantallas con datos.
-  - [ ] La interfaz es visualmente consistente y está en español.
-  - [ ] El código y los comentarios están en inglés.
+  - [x] La app corre sin errores ni warnings en Expo Go.
+  - [x] Todos los flujos de navegación fueron validados.
+  - [x] Los 3 estados (carga, vacío, contenido) funcionan en todas las pantallas.
+  - [x] La interfaz se ve bien y mantiene los estilos requeridos.
+  - [x] Los textos están en español correcto.
+  - [x] El código y comentarios internos están en inglés.
 
 ---
 
