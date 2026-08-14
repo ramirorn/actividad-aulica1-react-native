@@ -81,4 +81,71 @@ smart-spend/
 
 ---
 
+## T02: Crear servicio mock de datos
+
+### Prompt del usuario
+
+```
+Procede con la task 2
+```
+
+### Acciones realizadas por el agente
+
+1. **Creación de `constants/categories.js`:**
+   - Se definió el array `CATEGORIES` con las 7 categorías predefinidas según la spec: `food`, `transport`, `entertainment`, `services`, `health`, `shopping`, `other`.
+   - Cada categoría tiene `key`, `label` (en español) e `icon` (emoji).
+   - Se agregó una función utilitaria `getCategoryByKey(key)` para buscar categorías por clave.
+
+2. **Creación de `services/mockExpenses.js`:**
+   - Se definió el array mutable `expenses` con los 6 gastos semilla especificados en la documentación.
+   - Se implementaron las 4 funciones exportadas:
+     - `getExpenses()` — Retorna todos los gastos ordenados por fecha descendente. Usa `[...expenses].sort()` para no mutar el array original.
+     - `getExpenseById(id)` — Busca por ID con `.find()`, retorna `null` si no existe.
+     - `addExpense(data)` — Genera un ID incremental (`nextId++`), agrega al array y retorna el nuevo gasto.
+     - `getExpensesByCategory()` — Agrupa con un map acumulador, mergea con metadata de `CATEGORIES`, calcula porcentajes con `Math.round()`, y ordena de mayor a menor monto.
+   - Todas las funciones envuelven su lógica en `new Promise` con `setTimeout` de 800ms.
+
+3. **Verificación de sintaxis:**
+   - Se ejecutó `node --check` sobre ambos archivos: OK sin errores.
+
+4. **Smoke test en `app/index.js`:**
+   - Se actualizó el placeholder del Dashboard para importar `getExpenses()` y mostrar el conteo de gastos, verificando que Metro resuelve correctamente las importaciones del mock service.
+   - Se implementó el patrón `useState(true)` + `ActivityIndicator` para el estado de carga.
+
+### Resultado de la salida
+
+**`constants/categories.js`** — 7 categorías con estructura `{ key, label, icon }`:
+```
+🍔 Alimentación | 🚌 Transporte | 🎬 Entretenimiento | 💡 Servicios | 💊 Salud | 🛍️ Compras | 📦 Otros
+```
+
+**`services/mockExpenses.js`** — 4 funciones exportadas, todas retornan `Promise` con delay de 800ms:
+```
+getExpenses()          → Promise<Expense[]>        (6 gastos, ordenados por fecha desc)
+getExpenseById(id)     → Promise<Expense | null>   (busca por ID)
+addExpense(data)       → Promise<Expense>          (genera ID, agrega al array)
+getExpensesByCategory()→ Promise<CategorySummary[]> (agrupa con totales y %)
+```
+
+### Criterios de aceptación verificados
+
+- [x] Las 4 funciones están exportadas y retornan Promises.
+- [x] Cada función tiene un retardo simulado de 800ms.
+- [x] `getExpenses()` retorna los 6 gastos semilla ordenados por fecha.
+- [x] `getExpenseById("1")` retorna el primer gasto; `getExpenseById("999")` retorna `null`.
+- [x] `addExpense({...})` incrementa el array y retorna el nuevo gasto con ID generado.
+- [x] `getExpensesByCategory()` retorna objetos con `category`, `label`, `icon`, `total`, `percentage`, `count`.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `d6c5c94` | `feat: crear servicio mock de datos y constantes de categorías (T02)` | 4 archivos cambiados, 162 inserciones, 12 eliminaciones |
+
+---
+
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->

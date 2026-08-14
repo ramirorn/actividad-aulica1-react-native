@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 1 | 0 | 7 | **8** |
+| 2 | 0 | 6 | **8** |
 
 ---
 
@@ -30,7 +30,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T02: Crear servicio mock de datos
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `services/mockExpenses.js`, `constants/categories.js`
 - **Descripción:**
   - Crear el archivo `constants/categories.js` con la definición de las 7 categorías (clave, label en español, ícono emoji).
@@ -42,12 +42,12 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
     - Función `getExpensesByCategory()` — agrupa y totaliza por categoría con porcentajes.
   - Todas las funciones retornan `Promise` con `setTimeout` de **800ms**.
 - **Criterios de aceptación:**
-  - [ ] Las 4 funciones están exportadas y retornan Promises.
-  - [ ] Cada función tiene un retardo simulado de 800ms.
-  - [ ] `getExpenses()` retorna los 6 gastos semilla ordenados por fecha.
-  - [ ] `getExpenseById("1")` retorna el primer gasto; `getExpenseById("999")` retorna `null`.
-  - [ ] `addExpense({...})` incrementa el array y retorna el nuevo gasto con ID generado.
-  - [ ] `getExpensesByCategory()` retorna objetos con `category`, `label`, `icon`, `total`, `percentage`, `count`.
+  - [x] Las 4 funciones están exportadas y retornan Promises.
+  - [x] Cada función tiene un retardo simulado de 800ms.
+  - [x] `getExpenses()` retorna los 6 gastos semilla ordenados por fecha.
+  - [x] `getExpenseById("1")` retorna el primer gasto; `getExpenseById("999")` retorna `null`.
+  - [x] `addExpense({...})` incrementa el array y retorna el nuevo gasto con ID generado.
+  - [x] `getExpensesByCategory()` retorna objetos con `category`, `label`, `icon`, `total`, `percentage`, `count`.
 
 ---
 
