@@ -379,13 +379,18 @@ Procede con la task 6.
 >
 > **Acción 2:** Se reemplazó `useEffect` por `useFocusEffect` en `app/index.js` para que la función `loadExpenses` se vuelva a ejecutar automáticamente cada vez que el usuario vuelve al Dashboard (al hacer `router.back()`), asegurando que la lista siempre esté actualizada.
 
+> **Usuario 3:** "En el formulario de carga, al momento de hacer un input en algunos campos, estos son tapados por el teclado del teléfono y es necesario hacer scroll..."
+>
+> **Acción 3:** Se instaló la librería estándar `react-native-keyboard-aware-scroll-view` con el consentimiento del usuario. Se reemplazó la combinación nativa ineficiente de `KeyboardAvoidingView` + `ScrollView` por `<KeyboardAwareScrollView>` en `app/nuevo.js`, habilitando la propiedad `enableOnAndroid={true}` para garantizar que la pantalla haga scroll automático hacia el input activo sin ser tapado por el teclado en ambas plataformas.
+
 ### Commits
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
 | `f0f57c9` | `feat: crear formulario de alta de gasto (T06)` | 3 archivos cambiados, 292 inserciones, 7 eliminaciones |
 | `b020d81` | `fix: mejorar ux fecha, remover botón atrás redundante y corregir navegación` | 6 archivos cambiados |
-| `de83704` | `fix: recargar dashboard automáticamente al volver` | 2 archivos modificados |
+| `ce57faa` | `fix: recargar dashboard automáticamente al volver` | 2 archivos modificados |
+| `12f5c6a` | `fix: scroll automático de teclado en formulario` | 4 archivos modificados |
 
 ---
 

@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, StyleSheet, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { CATEGORIES } from '../constants/categories';
 import { addExpense } from '../services/mockExpenses';
 import FormField from '../components/FormField';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function NuevoGastoScreen() {
   const router = useRouter();
@@ -74,12 +75,13 @@ export default function NuevoGastoScreen() {
   const formattedDateDisplay = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.screen} 
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 88 : 0}
-    >
-      <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
+    <View style={styles.screen}>
+      <KeyboardAwareScrollView 
+        contentContainerStyle={styles.scrollContent} 
+        keyboardShouldPersistTaps="handled"
+        enableOnAndroid={true}
+        extraScrollHeight={20}
+      >
         <FormField
           label="Título"
           value={title}
@@ -191,8 +193,8 @@ export default function NuevoGastoScreen() {
             </Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
+    </View>
   );
 }
 
