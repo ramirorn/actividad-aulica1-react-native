@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 3 | 0 | 5 | **8** |
+| 4 | 0 | 4 | **8** |
 
 ---
 
@@ -53,7 +53,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T03: Implementar pantalla principal (Dashboard)
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `app/index.js`
 - **Dependencias:** T01, T02, T04
 - **Descripción:**
@@ -67,11 +67,11 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
   - `onPress` en un gasto navega a `/gasto/[id]`.
   - Botón para navegar a `/nuevo`.
 - **Criterios de aceptación:**
-  - [ ] Se muestra `ActivityIndicator` durante los primeros 800ms.
-  - [ ] Se muestra el total acumulado formateado como moneda.
-  - [ ] El `FlatList` renderiza los 6 gastos semilla con `ExpenseCard`.
-  - [ ] Al presionar un gasto se navega a `/gasto/[id]`.
-  - [ ] El botón de agregar navega a `/nuevo`.
+  - [x] Se muestra `ActivityIndicator` durante los primeros 800ms.
+  - [x] Se muestra el total acumulado formateado como moneda.
+  - [x] El `FlatList` renderiza los 6 gastos semilla con `ExpenseCard`.
+  - [x] Al presionar un gasto se navega a `/gasto/[id]`.
+  - [x] El botón de agregar navega a `/nuevo`.
 
 ---
 

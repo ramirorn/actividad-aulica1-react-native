@@ -208,9 +208,64 @@ Procede con las task 2
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
-| `pendiente` | `feat: crear componentes reutilizables (T04)` | 7 archivos (5 componentes nuevos + tasks.md + PROCESO.md) |
+| `5d69d41` | `feat: crear componentes reutilizables (T04)` | 7 archivos cambiados, 400 inserciones, 8 eliminaciones |
+
+---
+
+## T03: Implementar pantalla principal (Dashboard)
+
+### Prompt del usuario
+
+```
+procede con la task 3
+```
+
+### Acciones realizadas por el agente
+
+1. **Reemplazo completo de `app/index.js`:**
+   - Se reemplazó el placeholder/smoke-test con la implementación completa del Dashboard.
+   - Se importaron los componentes reutilizables de T04: `ExpenseCard`, `LoadingSpinner`, `EmptyState`.
+   - Se importó `getExpenses()` del servicio mock de T02.
+   - Se usó `useRouter()` de `expo-router` para navegación.
+
+2. **Implementación de los 3 estados de UI:**
+   - **Carga:** `LoadingSpinner` con mensaje "Cargando gastos..." se muestra mientras se resuelve la promesa (800ms).
+   - **Vacío:** `EmptyState` con ícono 📝 y mensaje "Aún no tenés gastos registrados", más un botón para agregar gasto.
+   - **Contenido:** Tarjeta de total acumulado + `FlatList` con `ExpenseCard` + barra de navegación inferior.
+
+3. **Total acumulado:**
+   - Se calcula con `reduce()` sobre el array de gastos.
+   - Se formatea como moneda argentina con `toLocaleString('es-AR')`.
+   - Se muestra en una tarjeta azul destacada en la parte superior.
+
+4. **Navegación:**
+   - `onPress` en `ExpenseCard` → `router.push('/gasto/${item.id}')`.
+   - Botón "+ Nuevo gasto" → `router.push('/nuevo')`.
+   - Botón "📊 Categorías" → `router.push('/categorias')`.
+
+5. **Verificación de sintaxis:**
+   - `node --check app/index.js`: OK.
+
+### Criterios de aceptación verificados
+
+- [x] Se muestra `ActivityIndicator` durante los primeros 800ms.
+- [x] Se muestra el total acumulado formateado como moneda.
+- [x] El `FlatList` renderiza los 6 gastos semilla con `ExpenseCard`.
+- [x] Al presionar un gasto se navega a `/gasto/[id]`.
+- [x] El botón de agregar navega a `/nuevo`.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `pendiente` | `feat: implementar pantalla principal Dashboard (T03)` | 3 archivos (index.js + tasks.md + PROCESO.md) |
 
 ---
 
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->
+
 
