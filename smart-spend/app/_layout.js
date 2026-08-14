@@ -26,7 +26,7 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="gasto/[id]"
-          options={{ title: 'Detalle del Gasto' }}
+          options={{ title: 'Detalle del Gasto', headerBackVisible: false }}
         />
       </Stack>
       <StatusBar style="light" />

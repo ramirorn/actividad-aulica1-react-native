@@ -309,13 +309,16 @@ Procede con la task 5
 
 ### Revisiones / Cambios solicitados
 
-> No se solicitaron revisiones ni cambios para esta tarea.
+> **Usuario:** "Quiero agregar una corrección para la task 5, al momento de seleccionar un gasto y abrir la pantalla de detalle dinámico, hay redundancia al implementar dos botones para volver al inicio, entonces quisiera que quites el de la esquina superior izquierda y dejes la de 'Volver al listado'."
+> 
+> **Acción:** Se agregó `headerBackVisible: false` a las opciones de navegación en `app/_layout.js` para la pantalla `gasto/[id]`, eliminando el botón predeterminado de volver.
 
 ### Commits
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
-| `6d6fe73` | `feat: crear pantalla de detalle dinámico (T05)` | 3 archivos cambiados, 244 inserciones, 14 eliminaciones |
+| `9840a84` | `feat: crear pantalla de detalle dinámico (T05)` | 3 archivos cambiados, 244 inserciones, 14 eliminaciones |
+| `ddef91e` | `fix: remover botón volver redundante en pantalla de detalle de gasto` | 1 archivo cambiado, 1 inserción, 1 eliminación |
 
 ---
 
