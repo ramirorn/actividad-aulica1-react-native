@@ -46,3 +46,38 @@ La gestión financiera personal suele ser un desafío debido a la complejidad de
    - Automáticamente se construirá el bundle y la aplicación se abrirá en tu dispositivo lista para usar.
    
    *(Opcional: Si cuentas con el entorno configurado en tu PC, puedes presionar `a` en la terminal para abrir el emulador de Android).*
+
+## 📂 Estructura del Proyecto
+
+El proyecto está organizado siguiendo las mejores prácticas para Expo Router y una arquitectura modular, separando responsabilidades:
+
+```text
+/
+├── smart-spend/          # Aplicación React Native (Expo)
+│   ├── app/              # Pantallas y rutas (Expo Router)
+│   │   ├── _layout.js    # Configuración global del Stack Navigator
+│   │   ├── index.js      # Dashboard (Inicio)
+│   │   ├── categorias.js # Resumen por categorías
+│   │   ├── nuevo.js      # Formulario de alta de gasto
+│   │   └── gasto/
+│   │       └── [id].js   # Pantalla de detalle dinámico
+│   ├── components/       # Componentes UI reutilizables
+│   │   ├── CategoryBar.js
+│   │   ├── EmptyState.js
+│   │   ├── ExpenseCard.js
+│   │   ├── FormField.js
+│   │   └── LoadingSpinner.js
+│   ├── constants/        # Constantes y configuración estática
+│   │   └── categories.js # Categorías disponibles con sus íconos
+│   ├── services/         # Servicios de datos (Capa de abstracción)
+│   │   └── mockExpenses.js # Base de datos en memoria (Simulación de backend)
+│   └── package.json      # Dependencias del proyecto
+├── documentacion/        # Documentos SDD (Spec-Driven Development)
+│   ├── constitution.md   # Reglas y acuerdos del proyecto
+│   ├── plan.md           # Diseño técnico
+│   ├── spec.md           # Especificaciones funcionales
+│   └── tasks.md          # Lista de tareas (Checklist)
+├── AGENTS.md             # Reglas y contexto para los agentes de IA
+├── PROCESO.md            # Bitácora detallada del desarrollo paso a paso
+└── README.md             # Este archivo
+```
