@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 6 | 0 | 2 | **8** |
+| 7 | 0 | 1 | **8** |
 
 ---
 
@@ -148,7 +148,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T07: Implementar pantalla de resumen por categorías
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `app/categorias.js`
 - **Dependencias:** T02, T04
 - **Descripción:**
@@ -161,11 +161,11 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
   - Mostrar el **total general** en la parte superior.
   - Ordenar categorías de mayor a menor monto.
 - **Criterios de aceptación:**
-  - [ ] Se muestra `ActivityIndicator` durante la carga.
-  - [ ] Las categorías se listan ordenadas de mayor a menor gasto.
-  - [ ] Cada categoría muestra ícono, nombre, total formateado y porcentaje.
-  - [ ] La barra de progreso es proporcional al porcentaje.
-  - [ ] Se muestra el total general de todos los gastos.
+  - [x] Se muestra `ActivityIndicator` durante la carga.
+  - [x] Las categorías se listan ordenadas de mayor a menor gasto.
+  - [x] Cada categoría muestra ícono, nombre, total formateado y porcentaje.
+  - [x] La barra de progreso es proporcional al porcentaje.
+  - [x] Se muestra el total general de todos los gastos.
 
 ---
 

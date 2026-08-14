@@ -394,4 +394,55 @@ Procede con la task 6.
 
 ---
 
+## T07: Implementar pantalla de resumen por categorías
+
+### Prompt del usuario
+
+```
+Procede con la task 7
+```
+
+### Acciones realizadas por el agente
+
+1. **Creación de `app/categorias.js`:**
+   - Se implementó la pantalla de resumen de gastos agrupados por categoría.
+   - Se importó `getExpensesByCategory` del servicio mock y el componente `CategoryBar` de T04.
+   - Se importó `useFocusEffect` de `expo-router` en combinación con `useCallback` para asegurar que los datos se recarguen cada vez que la pantalla gana el foco.
+
+2. **Lógica de agrupación y ordenamiento:**
+   - Los datos retornados por el servicio (objeto clave-valor) se transformaron en un arreglo.
+   - El arreglo resultante se ordenó de forma descendente en base al total gastado en cada categoría (`b.total - a.total`).
+   - Se calculó el "Total General" iterando sobre el arreglo ordenado, sumando los montos parciales.
+
+3. **Implementación de los 3 estados de UI:**
+   - **Carga:** `LoadingSpinner` con mensaje "Calculando resumen...".
+   - **Vacío:** `EmptyState` con mensaje "No hay datos de categorías todavía" y botón para regresar.
+   - **Contenido:** Tarjeta superior azul con el Gasto Total formateado como moneda, seguida por un `FlatList` que renderiza barras de categoría (`CategoryBar`), y un botón final fijo en la parte inferior para volver al inicio mediante `router.back()`.
+
+4. **Navegación consistente:**
+   - Dado que el botón superior nativo fue removido globalmente (`headerBackVisible: false`), se implementaron botones secundarios limpios (Volver al inicio) con la misma estética que en la pantalla de detalles.
+
+5. **Verificación de sintaxis:**
+   - Se corrió `node --check app/categorias.js` para asegurar que el código estuviese libre de errores sintácticos antes de hacer el commit.
+
+### Criterios de aceptación verificados
+
+- [x] Se muestra `ActivityIndicator` durante la carga.
+- [x] Las categorías se listan ordenadas de mayor a menor gasto.
+- [x] Cada categoría muestra ícono, nombre, total formateado y porcentaje.
+- [x] La barra de progreso es proporcional al porcentaje.
+- [x] Se muestra el total general de todos los gastos.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `5059ffb` | `feat: implementar pantalla de resumen por categorías (T07)` | 3 archivos modificados |
+
+---
+
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->
