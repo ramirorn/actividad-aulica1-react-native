@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 2 | 0 | 6 | **8** |
+| 3 | 0 | 5 | **8** |
 
 ---
 
@@ -77,7 +77,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T04: Crear componentes reutilizables
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `components/ExpenseCard.js`, `components/LoadingSpinner.js`, `components/EmptyState.js`, `components/CategoryBar.js`, `components/FormField.js`
 - **Dependencias:** T01
 - **Descripción:**
@@ -87,12 +87,12 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
   - **`CategoryBar.js`** — Fila con ícono, label, monto total y barra de progreso visual.
   - **`FormField.js`** — Label + `TextInput` + mensaje de error en rojo.
 - **Criterios de aceptación:**
-  - [ ] Cada componente recibe props documentadas y renderiza correctamente.
-  - [ ] `ExpenseCard` muestra ícono, título, fecha formateada y monto con formato moneda.
-  - [ ] `LoadingSpinner` muestra un spinner centrado en pantalla.
-  - [ ] `EmptyState` muestra un mensaje e ícono centrados.
-  - [ ] `CategoryBar` renderiza una barra proporcional al porcentaje.
-  - [ ] `FormField` muestra error en rojo cuando la prop `error` tiene contenido.
+  - [x] Cada componente recibe props documentadas y renderiza correctamente.
+  - [x] `ExpenseCard` muestra ícono, título, fecha formateada y monto con formato moneda.
+  - [x] `LoadingSpinner` muestra un spinner centrado en pantalla.
+  - [x] `EmptyState` muestra un mensaje e ícono centrados.
+  - [x] `CategoryBar` renderiza una barra proporcional al porcentaje.
+  - [x] `FormField` muestra error en rojo cuando la prop `error` tiene contenido.
 
 ---
 

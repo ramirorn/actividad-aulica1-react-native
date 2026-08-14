@@ -148,4 +148,69 @@ getExpensesByCategory()→ Promise<CategorySummary[]> (agrupa con totales y %)
 
 ---
 
+## T04: Crear componentes reutilizables
+
+### Prompt del usuario
+
+```
+Procede con las task 2
+```
+
+> **Nota:** T02 ya estaba completada. Se interpretó como "continuar con las siguientes tareas disponibles". Según el grafo de dependencias, T04 (componentes) era la siguiente tarea disponible ya que T03 depende de T04.
+
+### Acciones realizadas por el agente
+
+1. **Creación de `components/ExpenseCard.js`:**
+   - Layout en fila: ícono de categoría (círculo gris claro) a la izquierda, título + fecha al centro, monto a la derecha.
+   - Usa `getCategoryByKey()` para resolver el emoji del ícono.
+   - Incluye funciones locales `formatDate()` (dd/mm/yyyy) y `formatCurrency()` ($X.XXX con locale `es-AR`).
+   - Recibe props: `title`, `amount`, `category`, `date`, `onPress`.
+
+2. **Creación de `components/LoadingSpinner.js`:**
+   - `ActivityIndicator` centrado vertical y horizontalmente con fondo `#F5F7FA`.
+   - Mensaje opcional debajo del spinner (default: "Cargando...").
+   - Recibe prop: `message` (opcional).
+
+3. **Creación de `components/EmptyState.js`:**
+   - Emoji grande (56px) centrado con mensaje descriptivo en gris debajo.
+   - Padding horizontal de 32 para texto largo.
+   - Recibe props: `icon`, `message`.
+
+4. **Creación de `components/CategoryBar.js`:**
+   - Fila superior: ícono + label a la izquierda, monto formateado a la derecha.
+   - Barra de progreso visual proporcional al porcentaje (fondo gris, relleno azul `#4A90D9`).
+   - Porcentaje en texto pequeño alineado a la derecha.
+   - Recibe props: `label`, `icon`, `total`, `percentage`.
+
+5. **Creación de `components/FormField.js`:**
+   - Label superior en negrita, `TextInput` con borde gris y border-radius.
+   - Soporte para `multiline` (min-height 80, alineación top) y `keyboardType` (numeric).
+   - Cuando `error` tiene contenido: borde rojo + mensaje de error en rojo debajo.
+   - Recibe props: `label`, `value`, `onChangeText`, `error`, `placeholder`, `keyboardType`, `multiline`.
+
+6. **Verificación de sintaxis:**
+   - `node --check` sobre los 5 archivos: todos OK.
+
+### Criterios de aceptación verificados
+
+- [x] Cada componente recibe props documentadas y renderiza correctamente.
+- [x] `ExpenseCard` muestra ícono, título, fecha formateada y monto con formato moneda.
+- [x] `LoadingSpinner` muestra un spinner centrado en pantalla.
+- [x] `EmptyState` muestra un mensaje e ícono centrados.
+- [x] `CategoryBar` renderiza una barra proporcional al porcentaje.
+- [x] `FormField` muestra error en rojo cuando la prop `error` tiene contenido.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `pendiente` | `feat: crear componentes reutilizables (T04)` | 7 archivos (5 componentes nuevos + tasks.md + PROCESO.md) |
+
+---
+
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->
+
