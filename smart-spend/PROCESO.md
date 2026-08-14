@@ -262,10 +262,61 @@ procede con la task 3
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
-| `pendiente` | `feat: implementar pantalla principal Dashboard (T03)` | 3 archivos (index.js + tasks.md + PROCESO.md) |
+| `bc7045c` | `feat: implementar pantalla principal Dashboard (T03)` | 3 archivos cambiados, 198 inserciones, 33 eliminaciones |
+
+---
+
+## T05: Crear pantalla de detalle dinámico
+
+### Prompt del usuario
+
+```
+Procede con la task 5
+```
+
+### Acciones realizadas por el agente
+
+1. **Reemplazo de `app/gasto/[id].js`:**
+   - Se reemplazó el placeholder anterior con la implementación completa de la pantalla de detalle dinámico.
+   - Se importaron dependencias: `useLocalSearchParams` y `useRouter` de `expo-router`.
+   - Se importó la función mock `getExpenseById` y el helper `getCategoryByKey`.
+   - Se importó el componente reutilizable `LoadingSpinner`.
+
+2. **Manejo de estado y datos:**
+   - Se utilizó `useLocalSearchParams` para extraer el `id` de la ruta.
+   - Se configuraron estados para `expense`, `loading` y `notFound`.
+   - Se utilizó `useEffect` para cargar el gasto por ID, actualizando los estados correspondientes según si se encontró o no la data.
+
+3. **Implementación de los 3 estados de UI:**
+   - **Carga:** Se muestra el `LoadingSpinner` con el mensaje "Cargando detalle..." mientras se resuelve la promesa.
+   - **Error (no encontrado):** Si `getExpenseById` retorna nulo (e.g. ID inválido), se muestra un ícono de error ❌, un mensaje de "Gasto no encontrado" y un botón para regresar.
+   - **Contenido:** Si se encuentra el gasto, se muestra una tarjeta con:
+     - Cabecera azul destacada con el monto formateado.
+     - Filas de detalle para Título, Categoría (con ícono) y Fecha.
+     - Fila adicional para la Nota, renderizada condicionalmente si existe.
+   - Se añadió un botón inferior "Volver al listado" usando `router.back()`.
+
+4. **Verificación de sintaxis:**
+   - Se verificó la sintaxis del archivo modificado mediante `node --check`.
+
+### Criterios de aceptación verificados
+
+- [x] Se lee el `id` del parámetro de ruta dinámico.
+- [x] Se muestra `ActivityIndicator` durante la carga.
+- [x] Si el gasto no existe, se muestra *"Gasto no encontrado"*.
+- [x] Si el gasto existe, se muestran todos sus campos.
+- [x] El botón de volver regresa al Dashboard.
+
+### Revisiones / Cambios solicitados
+
+> No se solicitaron revisiones ni cambios para esta tarea.
+
+### Commits
+
+| Hash | Mensaje | Archivos |
+|------|---------|----------|
+| `6d6fe73` | `feat: crear pantalla de detalle dinámico (T05)` | 3 archivos cambiados, 244 inserciones, 14 eliminaciones |
 
 ---
 
 <!-- Las siguientes tareas se documentarán a medida que se vayan completando -->
-
-

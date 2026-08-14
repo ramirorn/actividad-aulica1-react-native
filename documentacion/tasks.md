@@ -8,7 +8,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 | Completadas | En progreso | Pendientes | Total |
 |:-----------:|:-----------:|:----------:|:-----:|
-| 4 | 0 | 4 | **8** |
+| 5 | 0 | 3 | **8** |
 
 ---
 
@@ -98,7 +98,7 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
 
 ## T05: Crear pantalla de detalle dinámico
 
-- **Estado:** `[ ]` Pendiente
+- **Estado:** `[x]` Completada
 - **Archivos:** `app/gasto/[id].js`
 - **Dependencias:** T02, T04
 - **Descripción:**
@@ -111,11 +111,11 @@ Checklist de tareas de implementación ordenadas por dependencia. Cada tarea es 
   - Mostrar: título, monto (formato moneda), categoría con ícono, fecha formateada y nota (si existe).
   - Botón para volver al listado (`router.back()`).
 - **Criterios de aceptación:**
-  - [ ] Se lee el `id` del parámetro de ruta dinámico.
-  - [ ] Se muestra `ActivityIndicator` durante la carga.
-  - [ ] Si el gasto no existe, se muestra *"Gasto no encontrado"*.
-  - [ ] Si el gasto existe, se muestran todos sus campos.
-  - [ ] El botón de volver regresa al Dashboard.
+  - [x] Se lee el `id` del parámetro de ruta dinámico.
+  - [x] Se muestra `ActivityIndicator` durante la carga.
+  - [x] Si el gasto no existe, se muestra *"Gasto no encontrado"*.
+  - [x] Si el gasto existe, se muestran todos sus campos.
+  - [x] El botón de volver regresa al Dashboard.
 
 ---
 
