@@ -1,7 +1,7 @@
 // Dashboard screen — displays the expense list with total and navigation.
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import { getExpenses } from '../services/mockExpenses';
 import ExpenseCard from '../components/ExpenseCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -21,9 +21,11 @@ export default function DashboardScreen() {
     });
   }, []);
 
-  useEffect(() => {
-    loadExpenses();
-  }, [loadExpenses]);
+  useFocusEffect(
+    useCallback(() => {
+      loadExpenses();
+    }, [loadExpenses])
+  );
 
   // Calculate accumulated total from all expenses.
   const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);

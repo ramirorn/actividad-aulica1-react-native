@@ -375,12 +375,17 @@ Procede con la task 6.
 > 3. Se ocultó el header de atrás (`headerBackVisible: false`) en `app/_layout.js` para `/nuevo` y `/categorias`.
 > 4. Se agregó un botón secundario "Cancelar" en el formulario de alta.
 
+> **Usuario 2:** "Al momento de crear el gasto este no se refleja automático (luego de volver a la ruta inicial), sino que hay que actualizar para que este aparezca."
+>
+> **Acción 2:** Se reemplazó `useEffect` por `useFocusEffect` en `app/index.js` para que la función `loadExpenses` se vuelva a ejecutar automáticamente cada vez que el usuario vuelve al Dashboard (al hacer `router.back()`), asegurando que la lista siempre esté actualizada.
+
 ### Commits
 
 | Hash | Mensaje | Archivos |
 |------|---------|----------|
 | `f0f57c9` | `feat: crear formulario de alta de gasto (T06)` | 3 archivos cambiados, 292 inserciones, 7 eliminaciones |
-| `5a57643` | `fix: mejorar ux fecha, remover botón atrás redundante y corregir navegación` | 6 archivos cambiados |
+| `b020d81` | `fix: mejorar ux fecha, remover botón atrás redundante y corregir navegación` | 6 archivos cambiados |
+| `de83704` | `fix: recargar dashboard automáticamente al volver` | 2 archivos modificados |
 
 ---
 
